@@ -132,11 +132,8 @@
             .enter()
             .append('path')
             .attr('d', d3.geoPath().projection(projection))
-                .attr('fill', function (d) {
-                    return origin_frequency.hasOwnProperty(d.properties.name) !== false ? d3.interpolateOranges(origin_frequency[d.properties.name]/190) : '#636363'
+                .attr('fill', "black")
 
-                })
-                .attr('id', d=> {return d.properties.name})
 
 }
     //Then, let's pull in a data set with the comments/responses that are highlighted
