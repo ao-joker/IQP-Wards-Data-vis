@@ -78,7 +78,7 @@
     console.log(d3)
 
     //Let's put in the wards map
-    Promise.all([d3.json("data_map.geojson")])
+    Promise.all([d3.json("Port_Phillip_Wards.geojson")])
             .then( ([wards]) => {createMap(wards)})    
   
         //Function that creates the map from the promise statement
@@ -124,7 +124,7 @@
             .data(updatedMap)
             .enter()
             .append('path')
-            .attr('d', function(d) { console.log(d); return d3.geoPath(d)})
+            .attr('d', function(d) {console.log(d); return d3.geoPath(d)})
             .attr('fill', "black")
 
 
