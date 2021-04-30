@@ -98,10 +98,13 @@
             var geoPath = d3.geoPath()
                          .projection(projection)
 
+            //Properly orient the data
+            let updatedMap = doneLoading(wards)
+            
             //Now let us draw the map
             d3.select("#map")
               .selectAll("path")
-              .data(doneLoading(wards))
+              .data(updatedMap)
               .enter()
               .append("path")
                 .attr('d', function(d)
@@ -122,10 +125,7 @@
         function doneLoading(map_loaded) 
         {
             loadedMap = map_loaded
-            let mapFeatures = loadedMap
-
-            console.log(loadedMap)
-            console.log(mapFeatures)
+            let mapFeatures = loadedMap.features
 
             updatedMap = mapFeatures.map(function(f) 
             {
