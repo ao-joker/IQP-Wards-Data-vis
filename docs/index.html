@@ -91,8 +91,6 @@
             
             //Start with the projection
             var projection = d3.geoMercator()
-                .scale(250)
-                .translate([svgWidth / 2, svgHeight / 2 * 1.3])
                
             //Then move to the geoPath
             var geoPath = d3.geoPath()
@@ -110,15 +108,15 @@
             loadedMap = map_loaded
             let mapFeatures = loadedMap.features
 
-            //console.log(loadedMap)
-            //console.log(mapFeatures)
+            console.log(loadedMap)
+            console.log(mapFeatures)
 
             updatedMap = mapFeatures.map(function(f) 
             {
                 return turf.rewind(f, {reverse: true});
             })
 
-            //console.log(updatedMap)
+            console.log(updatedMap)
 
             //Now let us draw the map
             d3.select("#map")
@@ -126,7 +124,7 @@
             .data(updatedMap)
             .enter()
             .append('path')
-            .attr('d', function(d) { return d3.geoPath(d)})
+            .attr('d', function(d) { console.log(d); return d3.geoPath(d)})
             .attr('fill', "black")
 
 
