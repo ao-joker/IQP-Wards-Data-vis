@@ -109,7 +109,7 @@
         let loadedMap
         let updatedMap
 
-        function doneLoading(map_loaded, geoPath, projection) 
+        function doneLoading(error, map_loaded, geoPath, projection) 
         {
             loadedMap = map_loaded
             let mapFeatures = loadedMap.features
@@ -126,13 +126,12 @@
             
             //Now let us draw the map
             d3.select("#map")
-            .append('g')
             .selectAll('path')
             .data(updatedMap)
             .enter()
             .append('path')
-            .attr('d', d3.geoPath().projection(projection))
-                .attr('fill', "black")
+            .attr('d', function(d) { return d3.geoPath(d)})
+            .attr('fill', "black")
 
 
 }
