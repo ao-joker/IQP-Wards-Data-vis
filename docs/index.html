@@ -101,20 +101,6 @@
             //Properly orient the data
             let updatedMap = doneLoading(wards)
             
-            //Now let us draw the map
-            d3.select("#map")
-              .append('g')
-              .selectAll("path")
-              .data(updatedMap)
-              .enter()
-              .append("path")
-                .attr('d', function(d)
-                {
-                    
-                    return geoPath(d)
-                })
-                .attr("stroke-width", 1)
-                .attr("stroke", "black")
 
 
         }
@@ -135,7 +121,22 @@
             {
                 return turf.rewind(f, {reverse: true});
             })
-        }
+            
+            //Now let us draw the map
+            d3.select("#map")
+              .append('g')
+              .selectAll("path")
+              .data(updatedMap)
+              .enter()
+              .append("path")
+                .attr('d', function(d)
+                {
+                    
+                    return geoPath(d)
+                })
+                .attr("stroke-width", 1)
+                .attr("stroke", "black")
+}
     //Then, let's pull in a data set with the comments/responses that are highlighted
     //Let's do this randomly, a whole set of responses and one for each region will be chosen after being cleaned
         //Makes it more reusable to the PPEC
