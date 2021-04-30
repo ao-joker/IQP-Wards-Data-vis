@@ -126,7 +126,7 @@
     let origin_frequency = {}
     // Queue up the Map data
     d3.queue()
-        .defer(d3.json, 'data_map.geojson')
+        .defer(d3.json, 'Port_Phillip_Wards.geojson')
         .await(doneLoading)
 
     let loadedMap
