@@ -139,11 +139,14 @@
         console.log(loadedMap)
         console.log(mapFeatures)
         
-        updatedMap = mapFeatures.map(function(f) {
+        updatedMap = mapFeatures.map(function(f)
+         {
             return turf.rewind(f, {reverse: true});
+            
+         })
+         
 
         console.log(updatedMap)
-        })
         spices = spices_loaded
         spices.forEach(function (spice_history) {
             /* spice_history
