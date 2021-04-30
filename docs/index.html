@@ -103,6 +103,7 @@
             
             //Now let us draw the map
             d3.select("#map")
+              .append('g')
               .selectAll("path")
               .data(updatedMap)
               .enter()
