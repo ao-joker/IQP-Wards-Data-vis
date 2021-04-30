@@ -126,7 +126,7 @@
     let origin_frequency = {}
     // Queue up the Map data
     d3.queue()
-        .defer(d3.json, 'finalCuisineMap.geojson')
+        .defer(d3.json, 'data_map.geojson')
         .defer(d3.csv, 'data_spices.csv')
         .await(doneLoading)
 
@@ -135,6 +135,10 @@
     function doneLoading(error, map_loaded, spices_loaded) {
         loadedMap = map_loaded
         let mapFeatures = loadedMap.features
+        
+        console.log(loadedMap)
+        console.log(mapFeatures)
+        
         updatedMap = mapFeatures.map(function(f) {
             return turf.rewind(f, {reverse: true});
         })
