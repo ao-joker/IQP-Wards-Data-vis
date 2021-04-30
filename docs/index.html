@@ -123,6 +123,10 @@
         {
             loadedMap = map_loaded
             let mapFeatures = loadedMap.features
+
+            console.log(loadedMap)
+            console.log(mapFeatures)
+
             updatedMap = mapFeatures.map(function(f) 
             {
             return turf.rewind(f, {reverse: true});
