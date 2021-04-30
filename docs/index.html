@@ -121,7 +121,7 @@
             //Now let us draw the map
             d3.select("#map")
             .selectAll('path')
-            .datum(updatedMap)
+            .data(updatedMap)
             .enter()
             .append('path')
             .attr('d', function(d) {console.log(d); return d3.geoPath(d)})
