@@ -84,8 +84,6 @@
         svgWidth = d3.select("#map").attr("width")
         svgHeight = d3.select("#map").attr("width")
 
-        console.log(svgWidth)
-
         let projection = d3.geoMercator()
             .scale(250)
             .translate([svgWidth / 2, svgHeight / 2 * 1.3])
@@ -111,6 +109,7 @@
                 }
             )
         }
+    
     //Then, let's pull in a data set with the comments/responses that are highlighted
     //Let's do this randomly, a whole set of responses and one for each region will be chosen after being cleaned
         //Makes it more reusable to the PPEC
