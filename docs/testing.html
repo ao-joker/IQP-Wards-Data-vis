@@ -222,16 +222,6 @@
         makeMap()
     }
 
-    let tooltipMap = d3.select('.d3')
-        .append('div')
-        .style("opacity", 0)
-        .attr("class", "tooltip")
-        .style("background-color", "white")
-        .style("border", "solid")
-        .style("border-width", "2px")
-        .style("border-radius", "5px")
-        .style("padding", "5px")
-
     function makeMap() {
         svgMap.append('g')
             .selectAll('path')
@@ -239,55 +229,6 @@
             .enter()
             .append('path')
             .attr('d', d3.geoPath().projection(projection))
-                .attr('fill', function (d) {
-                    return origin_frequency.hasOwnProperty(d.properties.name) !== false ? d3.interpolateOranges(origin_frequency[d.properties.name]/190) : '#636363'
-
-                })
-                .attr('id', d=> {return d.properties.name})
-                .style('stroke', 'transparent')
-                .style('opacity', function (d) {
-                    if (d.properties.region == 'True') return 0
-                    else return 0.8
-                })
-
-        function mouseover(d) {
-            d3.selectAll('.' + d[0].replace(/\s/g, '.'))
-                .style('opacity', 1)
-                .style('stroke', '#CC5500')
-            tooltipMap.style('opacity', 1)
-
-        }
-
-        function mouseleave(d) {
-            d3.selectAll('.' + d[0].replace(/\s/g, '.'))
-                .transition()
-                .duration(200)
-                .style('opacity', 0.05)
-                .style('stroke', '#026775')
-            tooltipMap.style('opacity', 0)
-        }
-
-        function mousemove(d) {
-            //console.log(d)
-            tooltipMap
-                .html('The spice ' + (d[0]) + ' originates in ' + d[2])
-                .style("left", (d3.mouse(this)[0]) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px")
-
-        }
-
-        svgMap.selectAll('myPath')
-            .data(spice_locations)
-            .enter()
-            .append('path')
-                .attr("d", function(d){ return path(d[1])})
-                .attr('class', function (d) { return d[0]})
-                .style("fill", "none")
-                .style('opacity', 0.05)
-                .style("stroke", "#026775")
-                .style("stroke-width", 5)
-                .on('mouseover', mouseover)
-                .on('mouseleave', mouseleave)
-                .on('mousemove', mousemove)
+                .attr('fill', "black")
     }
 </script>
