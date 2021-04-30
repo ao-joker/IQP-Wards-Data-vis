@@ -104,26 +104,22 @@
 
 
         }
-    
-        //Turf making the whole map visible
-        let loadedMap
-        let updatedMap
 
-        function doneLoading(error, map_loaded, geoPath, projection) 
+        function doneLoading(map_loaded, geoPath, projection) 
         {
             loadedMap = map_loaded
             let mapFeatures = loadedMap.features
 
-            console.log(loadedMap)
-            console.log(mapFeatures)
+            //console.log(loadedMap)
+            //console.log(mapFeatures)
 
             updatedMap = mapFeatures.map(function(f) 
             {
                 return turf.rewind(f, {reverse: true});
             })
 
-            console.log(updatedMap)
-            
+            //console.log(updatedMap)
+
             //Now let us draw the map
             d3.select("#map")
             .selectAll('path')
