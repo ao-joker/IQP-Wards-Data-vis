@@ -221,7 +221,7 @@
     function makeMap() {
         svgMap.append('g')
             .selectAll('path')
-            .datum(updatedMap)
+            .data(updatedMap)
             .enter()
             .append('path')
             .attr('d', d3.geoPath().projection(projection))
